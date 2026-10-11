@@ -22,12 +22,11 @@
     drowsyLimit: 3,
     rates: { both: 1, eyesOnly: 0.5, headOnly: 0.3 },
     yawnThreshold: 0.8,
-    recoverSeconds: 2,     // how long awake (or away) before the alarm clears
+    recoverSeconds: 2,     
     nobodyThreshold: 0.6,
     speechEveryMs: 5000
   };
 
-  // Class names are matched by keyword (lowercase).
   const ROLES = {
     drowsy: ["drows", "sleep", "closed", "nod", "head down", "slump"],
     yawn: ["yawn"],
@@ -35,7 +34,7 @@
     nobody: ["nobody", "no one", "empty", "background", "none"]
   };
 
-  // ---- Elements --------------------------------------------------------
+
   const $ = (id) => document.getElementById(id);
   const els = {
     container: $("webcam-container"),
@@ -57,7 +56,6 @@
     meter: $("meter-fill")
   };
 
-  // ---- State -----------------------------------------------------------
   let imageModel = null;
   let poseModel = null;
   let poseTried = false;
@@ -70,7 +68,7 @@
   let vibrateTimer = 0;
   let speechTimer = 0;
   let testTimer = 0;
-  const groups = []; // bar rows per model: [{fill, value}, ...]
+  const groups = []; 
 
   const session = {};
   resetSession();
@@ -165,10 +163,7 @@
   }
 
   // ---- Alarm sound -----------------------------------------------------
-  // A loud two-tone siren is generated in code and played through a normal
-  // <audio> element at full volume. Browsers cannot raise the device volume
-  // or break through a muted phone, but this is the loudest, most reliable
-  // sound a web page can make (and on iPhones it ignores the silent switch).
+  // A loud two-tone siren is generated in code and played through a normal and on iPhones it ignores the silent switch).
   function makeSirenUrl() {
     const rate = 22050;
     const seconds = 1.2;
@@ -212,7 +207,7 @@
       u.rate = 1.1;
       speechSynthesis.cancel();
       speechSynthesis.speak(u);
-    } catch (e) { /* ignore */ }
+    } catch (e) {  }
   }
 
   function buzz() {
@@ -248,7 +243,7 @@
     siren.currentTime = 0;
     clearInterval(vibrateTimer);
     clearInterval(speechTimer);
-    try { if ("speechSynthesis" in window) speechSynthesis.cancel(); } catch (e) { /* ignore */ }
+    try { if ("speechSynthesis" in window) speechSynthesis.cancel(); } catch (e) {  }
     if (navigator.vibrate) navigator.vibrate(0);
     els.alarm.hidden = true;
   }
@@ -300,7 +295,7 @@
     // How fast evidence builds depends on which models agree.
     let rate = 0;
     if (eyesDrowsy && headDrowsy) rate = CONFIG.rates.both;
-    else if (eyesDrowsy) rate = b ? CONFIG.rates.eyesOnly : CONFIG.rates.both; // image model alone: trust it
+    else if (eyesDrowsy) rate = b ? CONFIG.rates.eyesOnly : CONFIG.rates.both; 
     else if (headDrowsy) rate = CONFIG.rates.headOnly;
 
     const nobodyHere = nobodyScore >= CONFIG.nobodyThreshold;
@@ -318,11 +313,9 @@
 
     setMeter(session.alarmActive ? 1 : session.drowsyTime / CONFIG.drowsyLimit);
 
-    // Yawn counter: once per yawn.
     if (isYawning && !session.yawning) { session.yawning = true; session.yawns += 1; }
     else if (a.yawn < 0.5) session.yawning = false;
 
-    // Alarm on / off.
     if (!session.alarmActive && session.drowsyTime >= CONFIG.drowsyLimit) {
       startAlarm();
     } else if (session.alarmActive) {
@@ -421,7 +414,7 @@
     }
 
     try {
-      webcam = new tmImage.Webcam(400, 400, true); // width, height, flip
+      webcam = new tmImage.Webcam(400, 400, true); 
       await webcam.setup({ facingMode: "user" });
       await webcam.play();
     } catch (err) {

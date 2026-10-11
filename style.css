@@ -38,7 +38,6 @@ a { color: inherit; }
 
 .wrap { max-width: 980px; margin: 0 auto; padding: 0 1.25rem; }
 
-/* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -63,7 +62,6 @@ a { color: inherit; }
 .btn.dark { background: var(--night); color: #fff; }
 .btn.dark:hover { background: var(--night-2); }
 
-/* ---------- Nav ---------- */
 .nav {
   position: sticky;
   top: 0;
@@ -143,7 +141,6 @@ a { color: inherit; }
 .hero-actions { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .hero-note { margin-top: 1.1rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.65); }
 
-/* Animated eye */
 .eye-wrap { display: grid; place-items: center; }
 .eye { width: min(100%, 340px); height: auto; overflow: visible; }
 .eye-white { fill: #f5f7fb; }
@@ -169,7 +166,6 @@ a { color: inherit; }
   90%, 100%{ transform: translateY(0); }
 }
 
-/* ---------- Content blocks ---------- */
 .block { padding: 3rem 0; }
 .block.alt { background: var(--paper); }
 .block h2, .detector h2 { font-size: clamp(1.6rem, 4.5vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; }
@@ -187,7 +183,6 @@ a { color: inherit; }
 .steps p { color: var(--soft); }
 @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
 
-/* ---------- Detector ---------- */
 .btn.small { min-height: 40px; padding: 0.4rem 1rem; font-size: 0.92rem; }
 .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; margin-top: 0.9rem; }
 .sens { display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); }
@@ -251,7 +246,6 @@ body[data-state="warn"] #status-title { color: var(--warn); }
 .stats dt { font-size: 0.9rem; color: var(--soft); }
 .stats dd { margin: 0; font-family: var(--display); font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 
-/* ---------- About ---------- */
 .about { display: grid; gap: 2rem; }
 @media (min-width: 820px) { .about { grid-template-columns: 1.4fr 1fr; gap: 3rem; } }
 .about-text p { margin-top: 0.8rem; color: var(--soft); max-width: 60ch; }
@@ -270,7 +264,6 @@ body[data-state="warn"] #status-title { color: var(--warn); }
 .project p { color: var(--soft); flex: 1; }
 .project .btn { align-self: flex-start; margin-top: 0.4rem; }
 
-/* ---------- Contact + footer ---------- */
 .contact { background: linear-gradient(180deg, var(--night-2), var(--night)); color: #fff; }
 .contact .intro { color: rgba(255, 255, 255, 0.75); }
 .contact-actions { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
@@ -282,7 +275,6 @@ body[data-state="warn"] #status-title { color: var(--warn); }
 .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .js .reveal.in { opacity: 1; transform: none; }
 
-/* ---------- Alarm ---------- */
 .alarm {
   position: fixed; inset: 0; z-index: 20;
   display: grid; place-items: center;
