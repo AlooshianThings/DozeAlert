@@ -2,7 +2,7 @@
 
 A webcam-based sleep detector for students at their desks and for people on long drives. Two machine learning models watch your face and your head position. When either one says you look drowsy for about two seconds, the page sounds a loud alarm and tells you to take a break.
 
-Live site: _add your Vercel link here_
+Live site: https://dozealert.vercel.app/
 Demo video: _add your video link here_
 
 ## Problem statement
@@ -15,33 +15,33 @@ The page reads the webcam, runs an image classification model in the browser, an
 
 ## Dataset
 
-Self-collected with the webcam in Google Teachable Machine. _Fill in the real numbers and any public data you used (name, author, link, license):_
+Self-collected with the webcam in Google Teachable Machine.
 
 **Image model** (eyes and yawns)
 
 | Class | Samples | Description |
 |---|---|---|
-| Awake | _?_ | Eyes open, looking at the screen, normal blinking |
-| Eyes Closed | _?_ | Eyes closed or nearly closed, face toward the camera |
-| Yawning | _?_ | Mouth wide open in a yawn |
-| Nobody | _?_ | Empty chair or background, no face in frame |
+| Awake | ![awake](image.png) | Eyes open, looking at the screen, normal blinking |
+| Eyes Closed | ![eyes closed](image-1.png) | Eyes closed or nearly closed, face toward the camera |
+| Yawning | ![yawning](image-2.png) | Mouth wide open in a yawn |
+| Nobody | ![nobody](image-3.png) | Empty chair or background, no face in frame |
 
 **Pose model** (head and shoulder position)
 
 | Class | Samples | Description |
 |---|---|---|
-| Awake | _?_ | Upright, head up |
-| Drowsy | _?_ | Head dropping, nodding off, slumped |
-| Nobody | _?_ | Empty chair or background |
+| Awake | ![awake](image-4.png) | Upright, head up |
+| Drowsy |![drowsy](image-5.png) | Head dropping, nodding off, slumped |
+| Nobody | ![nobody](image-6.png) | Empty chair or background |
 
-Collected by: _you, plus (friend/roommate) if applicable_. Varied: _lighting, distance, angle, glasses on/off._
+Collected by: me. Varied: lighting, distance, angle
 
 ## Model training
 
 - Tool: Google Teachable Machine
 - Image model: Image Project, standard image model (transfer learning on MobileNet)
 - Pose model: Pose Project (PoseNet keypoints, then a small classifier)
-- Epochs / batch size / learning rate: _write the values you used for each model_
+- Epochs / batch size / learning rate: 50/16/0.001
 - Both exported in TensorFlow.js format (`model/` and `pose-model/`, each with `model.json`, `metadata.json`, `weights.bin`)
 
 ## Implementation
@@ -55,10 +55,9 @@ Collected by: _you, plus (friend/roommate) if applicable_. Varied: _lighting, di
 
 ## Testing
 
-_Fill in what you actually tried, for example:_
-- Tested with __ people in __ lighting conditions
-- Result: _e.g. correctly detected closed eyes in X of Y attempts_
-- False alarms: _e.g. long blinks, looking down at a book_
+- Tested with my friend in the car
+- Result: e.g. correctly detected closed eyes in 7 of 10 attempts
+- False alarms: e.g. looking down was counted as closed or drowsy
 
 ## Limitations
 
@@ -73,4 +72,3 @@ _Fill in what you actually tried, for example:_
 - Google Teachable Machine for model training (image and pose)
 - TensorFlow.js and @teachablemachine/image libraries
 - Fonts: Bricolage Grotesque and IBM Plex Sans (Google Fonts)
-- Code generated with help from Claude (Anthropic) and reviewed and tested by the author
